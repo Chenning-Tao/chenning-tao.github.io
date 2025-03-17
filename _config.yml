@@ -197,8 +197,8 @@ terser:
 # -----------------------------------------------------------------------------
 
 scholar:
-  last_name: [Einstein]
-  first_name: [Albert, A.]
+  last_name: [Tao]
+  first_name: [Chenning]
 
   style: apa
   locale: en
