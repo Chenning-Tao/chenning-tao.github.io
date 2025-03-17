@@ -27,13 +27,13 @@ Put your address / P.O. box / other info right below your picture. You can also 
 
 Link to your social media connections, too. This theme is set up to use [Font Awesome icons](https://fontawesome.com/) and [Academicons](https://jpswalsh.github.io/academicons/), like the ones below. Add your Facebook, Twitter, LinkedIn, Google Scholar, or just disable all of them. -->
 
-I'm a second-year PhD student at College of Computer Science and Technology, Zhejiang University, working under the supervision of Prof. Jianwei Yin and Prof. Liqiang Lu. My research mainly focuses on computer architecture.
+I'm a second-year PhD student at College of Computer Science and Technology, Zhejiang University, working under the supervision of [Prof. Jianwei Yin](https://person.zju.edu.cn/0001038) and [Prof. Liqiang Lu](https://liqianglu-zju.github.io/). My research mainly focuses on computer architecture.
 
 ### Education
 
 - Zhejiang University (ZJU), 2023 - Present \\
   Ph.D. student in Computer Science \\
-  Advisor: Prof. [Jianwei Yin](https://person.zju.edu.cn/0001038) & Prof. [Liqiang Lu](https://liqianglu-zju.github.io/)
+  Advisor: [Prof. Jianwei Yin](https://person.zju.edu.cn/0001038) & [Prof. Liqiang Lu](https://liqianglu-zju.github.io/)
 
 - Zhejiang University (ZJU), 2019 - 2023 \\
   Bachelor in Computer Science
