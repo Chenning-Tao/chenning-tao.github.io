@@ -16,7 +16,10 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/publications/";
           },
-        },{id: "projects-project-1",
+        },{id: "news-our-paper-qtenon-towards-low-latency-architecture-integration-for-accelerating-hybrid-quantum-classical-computing-has-been-accepted-by-isca-2025",
+          title: 'Our paper “Qtenon: Towards Low-Latency Architecture Integration for Accelerating Hybrid Quantum-Classical Computing” has...',
+          description: "",
+          section: "News",},{id: "projects-project-1",
           title: 'project 1',
           description: "with background image",
           section: "Projects",handler: () => {
