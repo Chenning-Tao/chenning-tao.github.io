@@ -27,7 +27,7 @@ Put your address / P.O. box / other info right below your picture. You can also 
 
 Link to your social media connections, too. This theme is set up to use [Font Awesome icons](https://fontawesome.com/) and [Academicons](https://jpswalsh.github.io/academicons/), like the ones below. Add your Facebook, Twitter, LinkedIn, Google Scholar, or just disable all of them. -->
 
-I'm a second-year PhD student at College of Computer Science and Technology, Zhejiang University, working under the supervision of [Prof. Jianwei Yin](https://person.zju.edu.cn/0001038) and [Prof. Liqiang Lu](https://liqianglu-zju.github.io/). My research mainly focuses on computer architecture.
+I'm a third-year PhD student at College of Computer Science and Technology, Zhejiang University, working under the supervision of [Prof. Jianwei Yin](https://person.zju.edu.cn/0001038) and [Prof. Liqiang Lu](https://liqianglu-zju.github.io/). My research mainly focuses on computer architecture.
 
 ### Education
 
