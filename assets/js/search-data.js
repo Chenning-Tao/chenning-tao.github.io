@@ -16,6 +16,13 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/publications/";
           },
+        },{id: "nav-中文",
+          title: "中文",
+          description: "浙江大学博士四年级学生，研究方向为 AI Infra，目前正在寻找 AI Infra 相关实习机会。",
+          section: "Navigation",
+          handler: () => {
+            window.location.href = "/zh/";
+          },
         },{id: "news-our-paper-qtenon-towards-low-latency-architecture-integration-for-accelerating-hybrid-quantum-classical-computing-has-been-accepted-by-isca-2025",
           title: 'Our paper “Qtenon: Towards Low-Latency Architecture Integration for Accelerating Hybrid Quantum-Classical Computing” has...',
           description: "",
