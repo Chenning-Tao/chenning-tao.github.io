@@ -43,9 +43,11 @@ layout: default
     <!-- News -->
     {% if page.announcements and page.announcements.enabled %}
       <h2>
-        <a href="{{ '/news/' | relative_url }}" style="color: inherit">News</a>
+        <a href="{{ '/news/' | relative_url }}" style="color: inherit">{{ page.announcements.title | default: 'News' }}</a>
       </h2>
-      {% include news.liquid limit=true %}
+      <div lang="en">
+        {% include news.liquid limit=true %}
+      </div>
     {% endif %}
 
     <!-- Latest posts -->
@@ -59,9 +61,11 @@ layout: default
     <!-- Selected papers -->
     {% if page.selected_papers %}
       <h2>
-        <a href="{{ '/publications/' | relative_url }}" style="color: inherit">Selected Publications</a>
+        <a href="{{ '/publications/' | relative_url }}" style="color: inherit">{{ page.selected_papers_title | default: 'Selected Publications' }}</a>
       </h2>
-      {% include selected_papers.liquid %}
+      <div lang="en">
+        {% include selected_papers.liquid %}
+      </div>
     {% endif %}
 
     <!-- Social -->
@@ -69,7 +73,7 @@ layout: default
       <div class="social">
         <div class="contact-icons">{% include social.liquid %}</div>
 
-        <div class="contact-note">{{ site.contact_note }}</div>
+        <div class="contact-note">{{ page.contact_note | default: site.contact_note }}</div>
       </div>
     {% endif %}
 
