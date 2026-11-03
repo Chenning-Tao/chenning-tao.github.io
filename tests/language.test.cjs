@@ -143,3 +143,8 @@ test("the initial pageshow does not overwrite an explicit choice when storage is
   view.listeners.pageshow({ persisted: false });
   assert.equal(view.root.lang, "zh-CN");
 });
+
+test("the initial HTML declares the language attribute for production CSS purging", () => {
+  const layout = fs.readFileSync(path.join(__dirname, "../_layouts/default.liquid"), "utf8");
+  assert.match(layout, /<html[^>]+data-site-language="en"/);
+});
