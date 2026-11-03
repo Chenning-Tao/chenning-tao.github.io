@@ -1,6 +1,10 @@
 <!-- Metadata, OpenGraph and Schema.org -->
 {% include metadata.liquid %}
 
+<!-- Apply the saved language before first paint; English is the no-JavaScript default. -->
+<script src="{{ '/assets/js/language.js' | relative_url | bust_file_cache }}"></script>
+<link rel="stylesheet" href="{{ '/assets/css/language.css' | relative_url | bust_file_cache }}">
+
 <!-- Bootstrap & MDB -->
 <link rel="stylesheet" href="{{ '/assets/css/bootstrap.min.css' | relative_url | bust_file_cache }}">
 <link

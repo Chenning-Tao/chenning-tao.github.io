@@ -43,7 +43,7 @@ layout: default
     <!-- News -->
     {% if page.announcements and page.announcements.enabled %}
       <h2>
-        <a href="{{ '/news/' | relative_url }}" style="color: inherit">{{ page.announcements.title | default: 'News' }}</a>
+        <a href="{{ '/news/' | relative_url }}" style="color: inherit">{% include translated.liquid en="News" zh="最新动态" %}</a>
       </h2>
       <div lang="en">
         {% include news.liquid limit=true %}
@@ -61,7 +61,9 @@ layout: default
     <!-- Selected papers -->
     {% if page.selected_papers %}
       <h2>
-        <a href="{{ '/publications/' | relative_url }}" style="color: inherit">{{ page.selected_papers_title | default: 'Selected Publications' }}</a>
+        <a href="{{ '/publications/' | relative_url }}" style="color: inherit">
+          {%- include translated.liquid en="Selected Publications" zh="精选论文" -%}
+        </a>
       </h2>
       <div lang="en">
         {% include selected_papers.liquid %}
@@ -73,7 +75,10 @@ layout: default
       <div class="social">
         <div class="contact-icons">{% include social.liquid %}</div>
 
-        <div class="contact-note">{{ page.contact_note | default: site.contact_note }}</div>
+        <div class="contact-note">
+          {% assign contact_note = page.contact_note | default: site.contact_note %}
+          {% include translated.liquid en=contact_note zh=page.contact_note_zh %}
+        </div>
       </div>
     {% endif %}
 

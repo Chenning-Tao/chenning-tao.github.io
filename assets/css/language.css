@@ -1,0 +1,58 @@
+/* English remains readable when JavaScript or browser storage is unavailable. */
+[data-language="zh"],
+html[data-site-language="zh"] [data-language="en"] {
+  display: none !important;
+}
+
+html[data-site-language="zh"] [data-language="zh"] {
+  display: revert !important;
+}
+
+.language-switch {
+  align-items: center;
+  gap: 0.25rem;
+  margin-left: auto;
+  white-space: nowrap;
+  order: 2;
+}
+
+.language-switch:not([hidden]) {
+  display: flex;
+}
+
+.language-switch button {
+  border: 0;
+  background: transparent;
+  color: var(--global-text-color);
+  cursor: pointer;
+  font: inherit;
+  padding: 0.5rem 0.25rem;
+}
+
+.language-switch button[aria-pressed="true"] {
+  color: var(--global-theme-color);
+  font-weight: 600;
+}
+
+.language-switch button:focus-visible {
+  outline: 2px solid var(--global-theme-color);
+  outline-offset: 2px;
+}
+
+@media (max-width: 575.98px) {
+  .language-switch {
+    order: 0;
+  }
+
+  #navbar .navbar-toggler {
+    margin-left: 0.75rem !important;
+  }
+
+  #navbar .navbar-brand {
+    font-size: 1rem;
+  }
+
+  .language-switch {
+    font-size: 0.875rem;
+  }
+}

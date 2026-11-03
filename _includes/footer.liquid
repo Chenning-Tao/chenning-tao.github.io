@@ -7,7 +7,7 @@
     <a href="{{ site.url }}{{ site.baseurl }}{{ site.impressum_path }}">Impressum</a>.
   {% endif %}
   {% if site.last_updated %}
-    Last updated: {{ 'now' | date: '%B %d, %Y' }}.
+    {% include translated.liquid en="Last updated:" zh="最后更新：" %} {{ 'now' | date: '%B %d, %Y' }}.
   {% endif %}
 {% endcapture %}
 

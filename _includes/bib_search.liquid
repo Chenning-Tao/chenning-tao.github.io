@@ -1,4 +1,15 @@
 {% if site.bib_search %}
   <script src="{{ '/assets/js/bibsearch.js' | relative_url | bust_file_cache }}" type="module"></script>
-  <input type="text" id="bibsearch" spellcheck="false" autocomplete="off" class="search bibsearch-form-input" placeholder="Type to filter">
+  <label for="bibsearch" class="sr-only">{% include translated.liquid en="Filter publications" zh="筛选论文" %}</label>
+  <input
+    type="text"
+    id="bibsearch"
+    spellcheck="false"
+    autocomplete="off"
+    class="search bibsearch-form-input"
+    placeholder="Type to filter"
+    data-language-en="Type to filter"
+    data-language-zh="输入关键词筛选论文"
+    data-language-attribute="placeholder"
+  >
 {% endif %}
