@@ -3,7 +3,7 @@ layout: about
 title: About
 permalink: /
 lang: en
-description: Fourth-year PhD student at Zhejiang University researching computer architecture and quantum computing, interested in transitioning to AI Infra and seeking related internships.
+description: Fourth-year PhD student at Zhejiang University researching computer architecture and quantum computing, seeking AI Infra internship opportunities.
 
 profile:
   align: right
@@ -28,7 +28,7 @@ announcements:
 
 I'm a fourth-year PhD student at the College of Computer Science and Technology, Zhejiang University, working under the supervision of [Prof. Jianwei Yin](https://person.zju.edu.cn/0001038) and [Prof. Liqiang Lu](https://liqianglu-zju.github.io/). My research focuses on **computer architecture**, especially **quantum computing**.
 
-**I'm interested in transitioning to AI infrastructure (AI Infra) and am currently seeking related internship opportunities.** Please feel free to [contact me by email](mailto:tcn@zju.edu.cn).
+**I’m currently looking for AI Infra internship opportunities.** Please feel free to [contact me by email](mailto:tcn@zju.edu.cn).
 
 ### Education
 
@@ -45,7 +45,7 @@ I'm a fourth-year PhD student at the College of Computer Science and Technology,
 
 我是浙江大学计算机科学与技术学院的博士四年级学生，导师为 [Jianwei Yin 教授](https://person.zju.edu.cn/0001038) 和 [Liqiang Lu 教授](https://liqianglu-zju.github.io/)。我的研究方向是**计算机体系结构**，尤其是**量子计算**。
 
-**我希望转向 AI 基础设施（AI Infra）方向，并正在寻找相关实习机会。** 欢迎通过[邮件](mailto:tcn@zju.edu.cn)联系我。
+**我目前正在寻找 AI Infra 相关实习机会。** 欢迎通过[邮件](mailto:tcn@zju.edu.cn)联系我。
 
 ### 教育经历
 
