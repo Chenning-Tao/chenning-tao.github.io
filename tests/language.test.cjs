@@ -148,3 +148,8 @@ test("the initial HTML declares the language attribute for production CSS purgin
   const layout = fs.readFileSync(path.join(__dirname, "../_layouts/default.liquid"), "utf8");
   assert.match(layout, /<html[^>]+data-site-language="en"/);
 });
+
+test("the publication search remains an HTML block when included from Markdown", () => {
+  const include = fs.readFileSync(path.join(__dirname, "../_includes/bib_search.liquid"), "utf8");
+  assert.match(include, /<div class="publication-search">[\s\S]*<label[\s\S]*<input[\s\S]*>\s*<\/div>/);
+});
