@@ -154,11 +154,12 @@ test("the publication search remains an HTML block when included from Markdown",
   assert.match(include, /<div class="publication-search">[\s\S]*<label[\s\S]*<input[\s\S]*>\s*<\/div>/);
 });
 
-test("the biography distinguishes existing research from the intended AI Infra transition", () => {
+test("the biography preserves research and uses the approved internship wording", () => {
   const biography = fs.readFileSync(path.join(__dirname, "../_pages/about.md"), "utf8");
   assert.match(biography, /research focuses on \*\*computer architecture/);
   assert.match(biography, /quantum computing/);
-  assert.match(biography, /interested in transitioning to AI infrastructure/);
-  assert.match(biography, /希望转向 AI 基础设施/);
+  assert.match(biography, /I’m currently looking for AI Infra internship opportunities\./);
+  assert.match(biography, /我目前正在寻找 AI Infra 相关实习机会。/);
+  assert.doesNotMatch(biography, /transitioning|希望转向/);
   assert.doesNotMatch(biography, /research focuses on \*\*AI|focusing on AI Infra|研究方向是 \*\*AI Infra/);
 });
