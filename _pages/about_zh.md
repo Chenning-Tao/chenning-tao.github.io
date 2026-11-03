@@ -12,7 +12,7 @@ sitemap: false
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Chenning Tao</title>
-    <link rel="canonical" href="{{ '/' | absolute_url }}">
+    <link rel="canonical" href="https://chenning-tao.github.io/">
     <script>
       // Compatibility for old bookmarks: one homepage, with a saved language choice.
       var home = new URL({{ '/' | relative_url | jsonify }}, window.location.origin);
@@ -23,6 +23,6 @@ sitemap: false
     </script>
   </head>
   <body>
-    <p>主页现已支持中英文切换。<a href="{{ '/' | relative_url }}">前往主页 / Go to homepage</a></p>
+    <p>主页现已支持中英文切换。<a href="/">前往主页 / Go to homepage</a></p>
   </body>
 </html>
