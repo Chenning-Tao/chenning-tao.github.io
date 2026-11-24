@@ -41,6 +41,14 @@
             alt=entry.preview
           %}
         {% endif %}
+      {% else %}
+        {% assign venue_name = entry.booktitle | default: entry.journal %}
+        {% if venue_name %}
+          <div class="venue-tile" aria-hidden="true">
+            <span class="venue-tile-name">{{ venue_name }}</span>
+            <span class="venue-tile-year">{{ entry.year }}</span>
+          </div>
+        {% endif %}
       {% endif %}
     </div>
   {% endif %}

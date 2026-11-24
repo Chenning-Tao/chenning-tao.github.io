@@ -1,48 +1,60 @@
 ---
 layout: default
 ---
-<div class="post">
-  <header class="post-header">
-    <h1 class="post-title">
-      {% if site.title == 'blank' %}
-        <span class="font-weight-bold">{{ site.first_name }}</span> {{ site.middle_name }}
-        {{ site.last_name }}
-      {% else %}
-        {{ site.title }}
+<div class="post about-page">
+  <header class="hero">
+    <div class="hero-text">
+      {% if page.hero.eyebrow %}
+        <p class="hero-eyebrow">{% include translated.liquid en=page.hero.eyebrow zh=page.hero.eyebrow_zh %}</p>
       {% endif %}
-    </h1>
-    <p class="desc">{{ page.subtitle }}</p>
+      <h1 class="post-title hero-name">
+        {% if site.title == 'blank' %}
+          {{ site.first_name }}
+          {{ site.middle_name }}
+          {{ site.last_name }}
+        {% else %}
+          {{ site.title }}
+        {% endif %}
+      </h1>
+      {% if page.hero.tagline %}
+        <p class="hero-tagline">{% include translated.liquid en=page.hero.tagline zh=page.hero.tagline_zh %}</p>
+      {% endif %}
+      {% if page.hero.tags %}
+        <ul class="hero-tags">
+          {% for tag in page.hero.tags %}
+            <li>{% include translated.liquid en=tag.en zh=tag.zh %}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+      <div class="hero-actions">
+        {% if page.hero.status %}
+          <a class="hero-status" href="mailto:{{ site.email | encode_email }}">
+            <span class="hero-status-dot" aria-hidden="true"></span>
+            {% include translated.liquid en=page.hero.status zh=page.hero.status_zh %}
+          </a>
+        {% endif %}
+        {% if page.social %}
+          <div class="hero-social contact-icons">{% include social.liquid %}</div>
+        {% endif %}
+      </div>
+    </div>
+    {% if page.profile and page.profile.image %}
+      <div class="hero-photo">
+        {% assign profile_image_path = page.profile.image | prepend: 'assets/img/' %}
+        {%
+          include figure.liquid loading="eager" path=profile_image_path class="img-fluid" sizes="(min-width: 576px) 260px, 60vw" alt=site.first_name
+          cache_bust=true
+        %}
+      </div>
+    {% endif %}
   </header>
 
   <article>
-    {% if page.profile %}
-      <div class="profile float-{% if page.profile.align == 'left' %}left{% else %}right{% endif %}">
-        {% if page.profile.image %}
-          {% assign profile_image_path = page.profile.image | prepend: 'assets/img/' %}
-          {% if page.profile.image_circular %}
-            {% assign profile_image_class = 'img-fluid z-depth-1 rounded-circle' %}
-          {% else %}
-            {% assign profile_image_class = 'img-fluid z-depth-1
-      rounded' %}
-          {% endif %}
-          {% capture sizes %}(min-width: {{ site.max_width }}) {{ site.max_width | minus: 30 | times: 0.3}}px, (min-width: 576px)
-      30vw, 95vw"{% endcapture %}
-          {%
-            include figure.liquid loading="eager" path=profile_image_path class=profile_image_class sizes=sizes alt=page.profile.image
-            cache_bust=true
-          %}
-        {% endif %}
-        {% if page.profile.more_info %}
-          <div class="more-info">{{ page.profile.more_info }}</div>
-        {% endif %}
-      </div>
-    {% endif %}
-
-    <div class="clearfix">{{ content }}</div>
+    <section class="about-bio clearfix">{{ content }}</section>
 
     <!-- News -->
     {% if page.announcements and page.announcements.enabled %}
-      <h2>
+      <h2 class="section-title">
         <a href="{{ '/news/' | relative_url }}" style="color: inherit">{% include translated.liquid en="News" zh="最新动态" %}</a>
       </h2>
       <div lang="en">
@@ -52,7 +64,7 @@ layout: default
 
     <!-- Latest posts -->
     {% if page.latest_posts and page.latest_posts.enabled %}
-      <h2>
+      <h2 class="section-title">
         <a href="{{ '/blog/' | relative_url }}" style="color: inherit">Latest Posts</a>
       </h2>
       {% include latest_posts.liquid %}
@@ -60,25 +72,13 @@ layout: default
 
     <!-- Selected papers -->
     {% if page.selected_papers %}
-      <h2>
+      <h2 class="section-title">
         <a href="{{ '/publications/' | relative_url }}" style="color: inherit">
           {%- include translated.liquid en="Selected Publications" zh="精选论文" -%}
         </a>
       </h2>
       <div lang="en">
         {% include selected_papers.liquid %}
-      </div>
-    {% endif %}
-
-    <!-- Social -->
-    {% if page.social %}
-      <div class="social">
-        <div class="contact-icons">{% include social.liquid %}</div>
-
-        <div class="contact-note">
-          {% assign contact_note = page.contact_note | default: site.contact_note %}
-          {% include translated.liquid en=contact_note zh=page.contact_note_zh %}
-        </div>
       </div>
     {% endif %}
 

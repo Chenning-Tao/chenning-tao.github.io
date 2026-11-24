@@ -14,6 +14,21 @@ profile:
   #   <p>123 your address street</p>
   #   <p>Your City, State 12345</p>
 
+hero:
+  eyebrow: PhD Student · Zhejiang University
+  eyebrow_zh: 浙江大学 · 博士研究生
+  tagline: Computer architecture research for quantum computing.
+  tagline_zh: 面向量子计算的计算机体系结构研究。
+  tags:
+    - en: Computer Architecture
+      zh: 计算机体系结构
+    - en: Quantum Computing
+      zh: 量子计算
+    - en: Quantum Error Correction
+      zh: 量子纠错
+  status: Open to AI Infra internships
+  status_zh: 正在寻找 AI Infra 实习
+
 selected_papers: true # includes a list of papers marked as "selected={true}"
 social: true # includes social icons at the bottom of the page
 contact_note_zh: 欢迎通过邮件联系我。
