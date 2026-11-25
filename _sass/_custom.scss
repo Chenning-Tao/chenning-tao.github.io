@@ -1,28 +1,34 @@
 /*******************************************************************************
- * Classic academic homepage style: white page, one sans-serif typeface,
- * one navy accent. Loaded last so it overrides the al-folio defaults.
+ * Minimal single-column style: narrow measure, monochrome palette, one
+ * typeface, every section on the same two-column grid.
+ * Loaded last so it overrides the al-folio defaults.
  ******************************************************************************/
 
 :root {
-  --ink: #222428;
-  --muted: #646a73;
-  --rule: #e6e7ea;
-  --accent: #0d4a8f;
-  --soft-bg: #f5f6f8;
+  --text-1: #171717;
+  --text-2: #525252;
+  --text-3: #8a8a8a;
+  --line: #ececec;
+  --underline: #d4d4d4;
+  --aside-width: 112px;
 
   --global-bg-color: #ffffff;
   --global-card-bg-color: #ffffff;
-  --global-text-color: var(--ink);
-  --global-text-color-light: var(--muted);
-  --global-theme-color: var(--accent);
-  --global-hover-color: var(--accent);
-  --global-divider-color: var(--rule);
+  --global-text-color: var(--text-1);
+  --global-text-color-light: var(--text-3);
+  --global-theme-color: var(--text-1);
+  --global-hover-color: var(--text-1);
+  --global-divider-color: var(--line);
   --global-footer-bg-color: #ffffff;
-  --global-footer-text-color: var(--muted);
-  --global-footer-link-color: var(--ink);
+  --global-footer-text-color: var(--text-3);
+  --global-footer-link-color: var(--text-2);
 }
 
 /* ---------- Base ---------- */
+
+html {
+  font-size: 15px;
+}
 
 body {
   font-family:
@@ -35,194 +41,252 @@ body {
     "Noto Sans SC",
     "Microsoft YaHei",
     sans-serif;
-  font-size: 1rem;
-  line-height: 1.7;
-  color: var(--ink);
+  line-height: 1.65;
+  color: var(--text-1);
   -webkit-font-smoothing: antialiased;
 }
 
 .post a,
 .publications a,
-.news a {
-  color: var(--accent);
-  text-decoration: none;
+.news a,
+footer a {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: var(--underline);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  transition:
+    text-decoration-color 0.15s ease,
+    color 0.15s ease;
 }
 
 .post a:hover,
 .publications a:hover,
-.news a:hover {
-  text-decoration: underline;
-  text-underline-offset: 3px;
+.news a:hover,
+footer a:hover {
+  color: var(--text-1);
+  text-decoration-color: var(--text-1);
 }
 
 .post strong {
-  font-weight: 600;
+  font-weight: 500;
+  color: var(--text-1);
+}
+
+/* The base theme colours every p/span/div explicitly; let these inherit. */
+.intro-role *,
+.about-bio *,
+.row-aside *,
+.row-meta *,
+.news td *,
+ol.bibliography .author *,
+ol.bibliography .periodical *,
+footer * {
+  color: inherit;
+}
+
+.about-page .about-bio strong {
+  color: var(--text-1);
 }
 
 /* ---------- Navbar & footer ---------- */
 
 #navbar {
-  background-color: rgba(255, 255, 255, 0.96) !important;
-  border-bottom: 1px solid var(--rule);
+  background-color: rgba(255, 255, 255, 0.9) !important;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 0;
   box-shadow: none;
 }
 
-#navbar .nav-link {
-  font-size: 0.95rem;
-  color: var(--muted) !important;
+#navbar .navbar-brand {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--text-1) !important;
+}
+
+#navbar .navbar-brand .font-weight-bold {
+  font-weight: 500 !important;
+}
+
+#navbar .nav-link,
+.language-switch button {
+  font-size: 0.93rem;
+  color: var(--text-3) !important;
 }
 
 #navbar .nav-link:hover,
-#navbar .nav-item.active > .nav-link {
-  color: var(--ink) !important;
+.language-switch button:hover,
+#navbar .nav-item.active > .nav-link,
+.language-switch button[aria-pressed="true"] {
+  color: var(--text-1) !important;
 }
 
-#navbar .nav-item.active > .nav-link {
-  font-weight: 600;
+#navbar .nav-item.active > .nav-link,
+.language-switch button[aria-pressed="true"] {
+  font-weight: 500;
 }
 
-footer.fixed-bottom,
+footer,
 footer.sticky-bottom {
-  background-color: #ffffff !important;
-  border-top: 1px solid var(--rule);
-  font-size: 0.78rem;
+  margin-top: 4rem;
+  background: transparent !important;
+  border-top: 0;
+  font-size: 0.8rem;
+  color: var(--text-3);
 }
 
-/* ---------- Profile header: photo left, introduction right ---------- */
+/* ---------- Intro ---------- */
 
-.about-page .profile-head {
-  display: grid;
-  grid-template-columns: 200px minmax(0, 1fr);
-  gap: 2.5rem;
-  align-items: start;
-  margin: 2.5rem 0 1rem;
+.about-page .intro {
+  margin-top: 3.5rem;
 }
 
-.about-page .profile-photo figure {
+.about-page .intro-id {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.75rem;
+}
+
+.about-page .intro-avatar {
+  flex: 0 0 auto;
+  width: 60px;
+  height: 60px;
+}
+
+.about-page .intro-avatar figure {
   margin: 0;
 }
 
-.about-page .profile-photo img {
-  display: block;
-  width: 100%;
-  aspect-ratio: 4 / 5;
+.about-page .intro-avatar img {
+  width: 60px;
+  height: 60px;
   object-fit: cover;
-  object-position: center 30%;
-  border-radius: 6px;
+  object-position: center 25%;
+  border-radius: 50%;
 }
 
-.about-page .profile-name {
+.about-page .intro-name {
   margin: 0;
-  font-size: 2rem;
-  font-weight: 700;
-  line-height: 1.2;
-  letter-spacing: -0.01em;
+  font-size: 1.07rem;
+  font-weight: 500;
+  line-height: 1.3;
+  letter-spacing: -0.005em;
 }
 
-.about-page .profile-role {
-  margin: 0.3rem 0 1rem;
-  font-size: 0.98rem;
-  color: var(--muted);
+.about-page .intro-role {
+  margin: 0.1rem 0 0;
+  font-size: 0.93rem;
+  line-height: 1.45;
+  color: var(--text-3);
+}
+
+.about-page .about-bio {
+  color: var(--text-2);
 }
 
 .about-page .about-bio p {
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.9rem;
 }
 
-.about-page .profile-contact {
+.about-page .intro-links {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   gap: 0.5rem 1.25rem;
-  margin-top: 1rem;
+  margin-top: 1.4rem;
 }
 
-.about-page .profile-status {
-  padding: 0.15rem 0.7rem;
-  border-radius: 4px;
-  background: #e8f3ec;
-  color: #1d6b3a !important;
-  font-size: 0.88rem;
-  font-weight: 500;
+.about-page .intro-status {
+  font-size: 0.93rem;
+  color: var(--text-1) !important;
 }
 
-.about-page .profile-email {
-  font-size: 0.95rem;
-}
-
-.about-page .profile-social.contact-icons {
+.about-page .intro-social.contact-icons {
   display: flex;
-  gap: 0.9rem;
-  font-size: 1.15rem;
+  gap: 1.1rem;
+  font-size: 1.05rem;
   text-align: left;
 }
 
-.about-page .profile-social.contact-icons a {
-  color: var(--muted);
+.about-page .intro-social.contact-icons a {
+  color: var(--text-3);
   text-decoration: none !important;
+  transition: color 0.15s ease;
 }
 
-.about-page .profile-social.contact-icons a:hover {
-  color: var(--accent);
+.about-page .intro-social.contact-icons a:hover {
+  color: var(--text-1);
 }
 
-/* ---------- Sections ---------- */
+/* ---------- Blocks ---------- */
 
-.about-page .section-title {
+.about-page .block {
+  margin-top: 3.5rem;
+}
+
+.about-page .block-title {
   display: flex;
   align-items: baseline;
   justify-content: space-between;
-  margin: 2.5rem 0 1rem;
-  padding-bottom: 0.4rem;
-  border-bottom: 1px solid var(--rule);
-  font-size: 1.35rem;
-  font-weight: 600;
+  margin: 0 0 1.25rem;
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--text-1);
 }
 
-.about-page .section-title a {
-  color: inherit;
+.about-page .block-title .block-more {
+  font-size: 0.87rem;
+  font-weight: 400;
+  color: var(--text-3) !important;
   text-decoration: none !important;
 }
 
-.about-page .section-title .section-more {
-  font-size: 0.88rem;
-  font-weight: 400;
-  color: var(--accent) !important;
-}
-
-.about-page .section-title .section-more span {
+.about-page .block-title .block-more span {
   color: inherit !important;
 }
 
-/* Education */
+.about-page .block-title .block-more:hover {
+  color: var(--text-1) !important;
+}
 
-.edu-list {
+/* Shared two-column row: aside (date / venue) + main */
+
+.rows {
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
-.edu-list li {
-  display: flex;
-  justify-content: space-between;
-  gap: 1.5rem;
-  margin-bottom: 0.9rem;
+.row-item {
+  display: grid;
+  grid-template-columns: var(--aside-width) minmax(0, 1fr);
+  gap: 1.25rem;
+  margin-bottom: 1.25rem;
 }
 
-.edu-degree {
-  margin: 0;
-  font-weight: 600;
-}
-
-.edu-school {
-  margin: 0;
-  color: var(--muted);
-}
-
-.edu-period {
-  flex-shrink: 0;
-  color: var(--muted);
+.row-aside,
+.news table th,
+ol.bibliography .pub-venue {
+  font-size: 0.87rem;
+  line-height: 1.6;
+  font-weight: 400;
+  color: var(--text-3);
   font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.row-title {
+  margin: 0;
+  font-weight: 500;
+  color: var(--text-1);
+}
+
+.row-meta {
+  margin: 0;
+  font-size: 0.93rem;
+  color: var(--text-3);
 }
 
 /* ---------- News ---------- */
@@ -232,11 +296,15 @@ footer.sticky-bottom {
   max-height: none !important;
 }
 
+.news table {
+  margin: 0;
+}
+
 .news table tr {
   display: grid;
-  grid-template-columns: 7.5rem minmax(0, 1fr);
-  gap: 1rem;
-  padding: 0.35rem 0;
+  grid-template-columns: var(--aside-width) minmax(0, 1fr);
+  gap: 1.25rem;
+  margin-bottom: 1rem;
 }
 
 .news table th,
@@ -248,190 +316,158 @@ footer.sticky-bottom {
 }
 
 .news table th {
-  font-weight: 600;
-  color: var(--ink);
-  font-variant-numeric: tabular-nums;
-  white-space: nowrap;
+  padding-top: 0.05rem !important;
 }
 
 .news table td {
-  color: var(--ink);
+  color: var(--text-2);
 }
 
 /* ---------- Publications ---------- */
 
-ol.bibliography li {
-  margin: 0 !important;
-  padding: 0.75rem 0;
-}
-
-ol.bibliography li .row > [id] > .links:empty {
-  display: none;
-}
-
-ol.bibliography li > .row {
+ol.bibliography {
   margin: 0;
-  align-items: flex-start;
-}
-
-ol.bibliography li .abbr {
-  flex: 0 0 170px;
-  max-width: 170px;
   padding: 0;
 }
 
-ol.bibliography li .row > [id] {
-  flex: 1 1 0;
-  max-width: none;
-  padding: 0 0 0 1.5rem;
+ol.bibliography li {
+  margin: 0 0 1.4rem !important;
+  padding: 0;
 }
 
-ol.bibliography li .abbr figure {
+ol.bibliography li > .row {
+  display: grid;
+  grid-template-columns: var(--aside-width) minmax(0, 1fr);
+  gap: 1.25rem;
   margin: 0;
 }
 
-ol.bibliography li .preview {
-  width: 100%;
-  aspect-ratio: 4 / 3;
-  object-fit: contain;
-  padding: 4px;
-  background: #fff;
-  border: 1px solid var(--rule);
-  border-radius: 4px !important;
-  box-shadow: none !important;
-}
-
-.venue-tile {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  aspect-ratio: 4 / 3;
-  border: 1px solid var(--rule);
-  border-radius: 4px;
-  background: var(--soft-bg);
-  color: var(--muted);
-  font-weight: 600;
-  letter-spacing: 0.02em;
+ol.bibliography li > .row > [id] {
+  width: auto;
+  max-width: none;
+  flex: none;
+  padding: 0;
 }
 
 ol.bibliography li .title {
-  font-weight: 600;
-  line-height: 1.45;
-  margin-bottom: 0.2rem;
+  margin: 0;
+  font-weight: 500 !important;
+  line-height: 1.5;
+  color: var(--text-1);
 }
 
 ol.bibliography li .author {
+  margin-top: 0.15rem;
   font-size: 0.93rem;
-  color: var(--ink);
+  line-height: 1.55;
+  color: var(--text-3);
 }
 
 ol.bibliography li .author a {
-  color: var(--ink);
+  color: var(--text-3);
+  text-decoration: none;
   border-bottom: 0 !important;
+}
+
+ol.bibliography li .author a:hover {
+  color: var(--text-1);
 }
 
 ol.bibliography li .author em {
   font-style: normal;
-  font-weight: 700;
+  color: var(--text-1) !important;
   border-bottom: 0 !important;
 }
 
+ol.bibliography li .author sup {
+  font-size: 0.65em;
+}
+
+ol.bibliography li .periodical-venue {
+  display: none;
+}
+
 ol.bibliography li .periodical {
-  font-size: 0.93rem;
-  color: var(--muted);
+  font-size: 0.87rem;
+  color: var(--text-3);
+  font-style: italic;
 }
 
 ol.bibliography li .links {
-  margin-top: 0.35rem;
+  margin-top: 0.2rem;
 }
 
 ol.bibliography li .links a.btn {
-  margin: 0 0.35rem 0.3rem 0;
-  padding: 0.05rem 0.55rem;
-  border: 1px solid var(--rule) !important;
-  border-radius: 4px;
-  background: #fff;
-  color: var(--accent) !important;
-  font-size: 0.8rem;
-  font-weight: 500;
-  text-transform: none;
+  margin: 0 1rem 0 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  background: none;
   box-shadow: none;
+  font-size: 0.87rem;
+  font-weight: 400;
+  text-transform: none;
+  color: var(--text-2) !important;
+  text-decoration: underline;
+  text-decoration-color: var(--underline);
+  text-underline-offset: 3px;
 }
 
 ol.bibliography li .links a.btn:hover {
-  border-color: var(--accent) !important;
-  text-decoration: none;
+  color: var(--text-1) !important;
+  text-decoration-color: var(--text-1);
 }
 
 /* Publications page */
 
+.post-header {
+  margin-top: 3.5rem;
+}
+
 .post-header .post-title {
-  font-size: 2rem;
-  font-weight: 700;
-  letter-spacing: -0.01em;
+  font-size: 1.07rem;
+  font-weight: 500;
+  letter-spacing: -0.005em;
 }
 
 .publications h2.bibliography {
-  margin: 2rem 0 0;
-  padding: 0 0 0.4rem;
-  border-top: 0;
-  border-bottom: 1px solid var(--rule);
+  margin: 2.75rem 0 1.1rem;
+  padding: 0;
+  border: 0;
   text-align: left;
-  font-size: 1.3rem;
-  font-weight: 600;
-  color: var(--ink);
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--text-1);
 }
 
 #bibsearch {
-  border: 1px solid var(--rule) !important;
-  border-radius: 6px !important;
-  padding: 0.45rem 0.8rem;
+  width: 100%;
+  border: 1px solid var(--line) !important;
+  border-radius: 8px !important;
+  padding: 0.5rem 0.8rem;
+  font-size: 0.93rem;
   box-shadow: none !important;
 }
 
 #bibsearch:focus {
   outline: none;
-  border-color: var(--accent) !important;
+  border-color: var(--underline) !important;
 }
 
-/* ---------- Responsive ---------- */
-
-@media (max-width: 767.98px) {
-  .about-page .profile-head {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-    margin-top: 1.5rem;
-  }
-
-  .about-page .profile-photo {
-    width: 150px;
-  }
-}
+/* ---------- Small screens ---------- */
 
 @media (max-width: 575.98px) {
-  .edu-list li {
-    flex-direction: column;
-    gap: 0;
+  .about-page .intro {
+    margin-top: 2rem;
   }
 
-  .news table tr {
-    grid-template-columns: 1fr;
-    gap: 0;
-  }
-
+  .row-item,
+  .news table tr,
   ol.bibliography li > .row {
-    flex-direction: column;
+    grid-template-columns: 1fr;
+    gap: 0.1rem;
   }
+}
 
-  ol.bibliography li .abbr {
-    flex: none;
-    max-width: 200px;
-    width: 100%;
-    margin-bottom: 0.6rem;
-  }
-
-  ol.bibliography li .row > [id] {
-    padding-left: 0;
-  }
+footer .container {
+  text-align: left !important;
 }

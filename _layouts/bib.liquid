@@ -1,6 +1,11 @@
 ---
 ---
 <div class="row">
+  {% assign venue_name = entry.booktitle | default: entry.journal %}
+  <span class="pub-venue">
+    {{- venue_name }}
+    {{ entry.year -}}
+  </span>
   {% if site.enable_publication_thumbnails %}
     <div class="col col-sm-2 abbr">
       {%- if entry.abbr -%}
@@ -184,7 +189,7 @@
     {% endif %}
     {% assign entrytype_text = entrytype | strip_html | strip %}
     {% capture periodical %}{{ entrytype }}{% if entrytype_text != "" and entryyear != "" %}, {% endif %}{{ entrymonth }}{{ entryyear }}{% endcapture %}
-    <div class="periodical">
+    <div class="periodical periodical-venue">
       {{ periodical | strip }}
     </div>
     <div class="periodical">
