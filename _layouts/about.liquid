@@ -20,7 +20,7 @@ layout: default
         <p class="hero-tagline">{% include translated.liquid en=page.hero.tagline zh=page.hero.tagline_zh %}</p>
       {% endif %}
       <div class="hero-actions">
-        {% if page.hero.status %}
+        {% if page.internship and page.hero.status %}
           <a class="hero-status" href="mailto:{{ site.email | encode_email }}">
             <span class="hero-status-dot" aria-hidden="true"></span>
             {% include translated.liquid en=page.hero.status zh=page.hero.status_zh %}
