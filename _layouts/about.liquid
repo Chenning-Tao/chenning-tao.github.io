@@ -19,13 +19,6 @@ layout: default
       {% if page.hero.tagline %}
         <p class="hero-tagline">{% include translated.liquid en=page.hero.tagline zh=page.hero.tagline_zh %}</p>
       {% endif %}
-      {% if page.hero.tags %}
-        <ul class="hero-tags">
-          {% for tag in page.hero.tags %}
-            <li>{% include translated.liquid en=tag.en zh=tag.zh %}</li>
-          {% endfor %}
-        </ul>
-      {% endif %}
       <div class="hero-actions">
         {% if page.hero.status %}
           <a class="hero-status" href="mailto:{{ site.email | encode_email }}">

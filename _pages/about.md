@@ -19,13 +19,6 @@ hero:
   eyebrow_zh: 浙江大学 · 博士研究生
   tagline: Computer architecture research for quantum computing.
   tagline_zh: 面向量子计算的计算机体系结构研究。
-  tags:
-    - en: Computer Architecture
-      zh: 计算机体系结构
-    - en: Quantum Computing
-      zh: 量子计算
-    - en: Quantum Error Correction
-      zh: 量子纠错
   status: Open to AI Infra internships
   status_zh: 正在寻找 AI Infra 实习
 
