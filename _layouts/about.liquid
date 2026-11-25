@@ -31,48 +31,100 @@ layout: default
         {% endif %}
       </div>
     </div>
-    {% if page.profile and page.profile.image %}
-      <div class="hero-photo">
-        {% assign profile_image_path = page.profile.image | prepend: 'assets/img/' %}
-        {%
-          include figure.liquid loading="eager" path=profile_image_path class="img-fluid" sizes="(min-width: 576px) 260px, 60vw" alt=site.first_name
-          cache_bust=true
-        %}
+
+    <figure class="hero-figure">
+      <div class="hero-figure-art">
+        {% include surface_code.liquid %}
+        {% if page.profile and page.profile.image %}
+          <div class="hero-photo">
+            {% assign profile_image_path = page.profile.image | prepend: 'assets/img/' %}
+            {%
+              include figure.liquid loading="eager" path=profile_image_path class="img-fluid" sizes="(min-width: 576px) 240px, 50vw" alt=site.first_name
+              cache_bust=true
+            %}
+          </div>
+        {% endif %}
       </div>
-    {% endif %}
+      {% if page.hero.figure_caption %}
+        <figcaption>{% include translated.liquid en=page.hero.figure_caption zh=page.hero.figure_caption_zh %}</figcaption>
+      {% endif %}
+    </figure>
   </header>
 
   <article>
-    <section class="about-bio clearfix">{{ content }}</section>
+    <section class="ed-section">
+      <h2 class="ed-label"><span class="ed-num">01</span>{% include translated.liquid en="About" zh="关于我" %}</h2>
+      <div class="ed-body about-bio">{{ content }}</div>
+    </section>
 
-    <!-- News -->
+    {% if page.education %}
+      <section class="ed-section">
+        <h2 class="ed-label"><span class="ed-num">02</span>{% include translated.liquid en="Education" zh="教育经历" %}</h2>
+        <div class="ed-body">
+          <ol class="edu-list">
+            {% for item in page.education %}
+              <li>
+                <span class="edu-period">{% include translated.liquid en=item.period zh=item.period_zh %}</span>
+                <div>
+                  <p class="edu-degree">{% include translated.liquid en=item.degree zh=item.degree_zh %}</p>
+                  <p class="edu-school">
+                    {% include translated.liquid en=item.school zh=item.school_zh -%}
+                    {%- if item.advisors -%}
+                      {%- capture advisors_en -%}
+                        · Advised by <a href="https://person.zju.edu.cn/0001038">Prof. Jianwei Yin</a> &amp;
+                        <a href="https://liqianglu-zju.github.io/">Prof. Liqiang Lu</a>
+                      {%- endcapture -%}
+                      {%- capture advisors_zh -%}
+                        · 导师：<a href="https://person.zju.edu.cn/0001038">Jianwei Yin 教授</a> &amp;
+                        <a href="https://liqianglu-zju.github.io/">Liqiang Lu 教授</a>
+                      {%- endcapture %}
+                      {% include translated.liquid en=advisors_en zh=advisors_zh %}
+                    {%- endif -%}
+                  </p>
+                </div>
+              </li>
+            {% endfor %}
+          </ol>
+        </div>
+      </section>
+    {% endif %}
+
     {% if page.announcements and page.announcements.enabled %}
-      <h2 class="section-title">
-        <a href="{{ '/news/' | relative_url }}" style="color: inherit">{% include translated.liquid en="News" zh="最新动态" %}</a>
-      </h2>
-      <div lang="en">
-        {% include news.liquid limit=true %}
-      </div>
+      <section class="ed-section">
+        <h2 class="ed-label">
+          <span class="ed-num">03</span>
+          <a href="{{ '/news/' | relative_url }}">{% include translated.liquid en="News" zh="最新动态" %}</a>
+        </h2>
+        <div class="ed-body" lang="en">
+          {% include news.liquid limit=true %}
+        </div>
+      </section>
     {% endif %}
 
-    <!-- Latest posts -->
     {% if page.latest_posts and page.latest_posts.enabled %}
-      <h2 class="section-title">
-        <a href="{{ '/blog/' | relative_url }}" style="color: inherit">Latest Posts</a>
-      </h2>
-      {% include latest_posts.liquid %}
+      <section class="ed-section">
+        <h2 class="ed-label">
+          <a href="{{ '/blog/' | relative_url }}">Latest Posts</a>
+        </h2>
+        <div class="ed-body">{% include latest_posts.liquid %}</div>
+      </section>
     {% endif %}
 
-    <!-- Selected papers -->
     {% if page.selected_papers %}
-      <h2 class="section-title">
-        <a href="{{ '/publications/' | relative_url }}" style="color: inherit">
-          {%- include translated.liquid en="Selected Publications" zh="精选论文" -%}
-        </a>
-      </h2>
-      <div lang="en">
-        {% include selected_papers.liquid %}
-      </div>
+      <section class="ed-section">
+        <h2 class="ed-label">
+          <span class="ed-num">04</span>
+          <a href="{{ '/publications/' | relative_url }}">
+            {%- include translated.liquid en="Selected Papers" zh="精选论文" -%}
+          </a>
+        </h2>
+        <div class="ed-body" lang="en">
+          {% include selected_papers.liquid %}
+          <a class="ed-more" href="{{ '/publications/' | relative_url }}">
+            {%- include translated.liquid en="All publications →" zh="全部论文 →" -%}
+          </a>
+        </div>
+      </section>
     {% endif %}
 
     {% if site.newsletter and site.newsletter.enabled and site.footer_fixed %}

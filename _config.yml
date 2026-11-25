@@ -52,7 +52,7 @@ socials_in_search: true
 bib_search: true
 
 # Dimensions
-max_width: 930px
+max_width: 1040px
 
 # TODO: add layout settings (single page vs. multi-page)
 
@@ -372,7 +372,7 @@ third_party_libraries:
     version: "5.5.0"
   google_fonts:
     url:
-      fonts: "https://fonts.googleapis.com/css?family=Inter:400,500,600,700,800|Roboto:300,400,500,700|Roboto+Slab:100,300,400,500,700|Material+Icons&display=swap"
+      fonts: "https://fonts.googleapis.com/css?family=Instrument+Serif:400,400i|Inter:400,500,600,700|JetBrains+Mono:400,500,600|Noto+Serif+SC:500|Roboto:300,400,500,700|Roboto+Slab:100,300,400,500,700|Material+Icons&display=swap"
   highlightjs:
     integrity:
       css:
