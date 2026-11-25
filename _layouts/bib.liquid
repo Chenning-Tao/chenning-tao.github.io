@@ -1,11 +1,6 @@
 ---
 ---
 <div class="row">
-  {% assign venue_name = entry.booktitle | default: entry.journal %}
-  <div class="venue-label">
-    <span class="venue-name">{{ venue_name }}</span>
-    <span class="venue-year">{{ entry.year }}</span>
-  </div>
   {% if site.enable_publication_thumbnails %}
     <div class="col col-sm-2 abbr">
       {%- if entry.abbr -%}
@@ -45,6 +40,14 @@
             avoid_scaling=true
             alt=entry.preview
           %}
+        {% endif %}
+      {% else %}
+        {% assign venue_name = entry.booktitle | default: entry.journal %}
+        {% if venue_name %}
+          <div class="venue-tile" aria-hidden="true">
+            {{ venue_name }}
+            {{ entry.year }}
+          </div>
         {% endif %}
       {% endif %}
     </div>
@@ -181,7 +184,7 @@
     {% endif %}
     {% assign entrytype_text = entrytype | strip_html | strip %}
     {% capture periodical %}{{ entrytype }}{% if entrytype_text != "" and entryyear != "" %}, {% endif %}{{ entrymonth }}{{ entryyear }}{% endcapture %}
-    <div class="periodical periodical-venue">
+    <div class="periodical">
       {{ periodical | strip }}
     </div>
     <div class="periodical">

@@ -18,10 +18,8 @@ profile:
 internship: false
 
 hero:
-  eyebrow: Ph.D. Student · Zhejiang University
-  eyebrow_zh: 浙江大学 · 计算机科学博士研究生
-  tagline: Computer architecture & AI infrastructure.
-  tagline_zh: 计算机体系结构 · AI Infra
+  eyebrow: Ph.D. Student, College of Computer Science and Technology, Zhejiang University
+  eyebrow_zh: 浙江大学 计算机科学与技术学院 博士研究生
   status: Open to AI Infra internships
   status_zh: 正在寻找 AI Infra 实习
 
