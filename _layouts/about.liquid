@@ -32,23 +32,15 @@ layout: default
       </div>
     </div>
 
-    <figure class="hero-figure">
-      <div class="hero-figure-art">
-        {% include surface_code.liquid %}
-        {% if page.profile and page.profile.image %}
-          <div class="hero-photo">
-            {% assign profile_image_path = page.profile.image | prepend: 'assets/img/' %}
-            {%
-              include figure.liquid loading="eager" path=profile_image_path class="img-fluid" sizes="(min-width: 576px) 240px, 50vw" alt=site.first_name
-              cache_bust=true
-            %}
-          </div>
-        {% endif %}
+    {% if page.profile and page.profile.image %}
+      <div class="hero-photo">
+        {% assign profile_image_path = page.profile.image | prepend: 'assets/img/' %}
+        {%
+          include figure.liquid loading="eager" path=profile_image_path class="img-fluid" sizes="(min-width: 576px) 260px, 60vw" alt=site.first_name
+          cache_bust=true
+        %}
       </div>
-      {% if page.hero.figure_caption %}
-        <figcaption>{% include translated.liquid en=page.hero.figure_caption zh=page.hero.figure_caption_zh %}</figcaption>
-      {% endif %}
-    </figure>
+    {% endif %}
   </header>
 
   <article>

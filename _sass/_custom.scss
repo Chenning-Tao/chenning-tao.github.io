@@ -134,7 +134,7 @@ footer.sticky-bottom {
 
 .about-page .hero {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 300px;
+  grid-template-columns: minmax(0, 1fr) 260px;
   gap: 3rem;
   align-items: center;
   padding: 2.5rem 0 2.75rem;
@@ -254,103 +254,40 @@ html[data-site-language="zh"] .about-page .hero-tagline {
   color: var(--accent) !important;
 }
 
-/* Figure: surface-code lattice with the portrait mounted on top */
-
-.about-page .hero-figure {
-  margin: 0;
-}
-
-.about-page .hero-figure-art {
-  position: relative;
-  width: 100%;
-  aspect-ratio: 1;
-}
-
-.about-page .sc-lattice {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-}
-
-.sc-plaq {
-  stroke: var(--paper);
-  stroke-width: 1.5;
-}
-
-.sc-x {
-  fill: var(--accent-tint);
-}
-
-.sc-z {
-  fill: rgba(28, 27, 25, 0.07);
-}
-
-.sc-anc {
-  fill: var(--muted);
-  opacity: 0.55;
-}
-
-.sc-data {
-  fill: var(--ink);
-}
-
-.sc-lost {
-  fill: var(--paper);
-  stroke: var(--accent);
-  stroke-width: 1.5;
-}
-
-.sc-lost-ring {
-  fill: none;
-  stroke: var(--accent);
-  stroke-width: 1;
-  stroke-dasharray: 2 3;
-  transform-box: fill-box;
-  transform-origin: center;
-  animation: ring-spin 14s linear infinite;
-}
-
-@keyframes ring-spin {
-  to {
-    transform: rotate(360deg);
-  }
-}
+/* Portrait, mounted like a print with an offset ink frame */
 
 .about-page .hero-photo {
+  position: relative;
+  width: 100%;
+  max-width: 260px;
+  justify-self: end;
+}
+
+.about-page .hero-photo::before {
+  content: "";
   position: absolute;
-  top: 6%;
-  right: 0;
-  width: 60%;
-  padding: 6px;
-  background: var(--paper-raised);
-  border: 1px solid var(--rule);
-  box-shadow: 0 14px 30px -18px rgba(28, 27, 25, 0.45);
+  inset: 0;
+  transform: translate(-12px, 12px);
+  border: 1px solid var(--ink);
 }
 
 .about-page .hero-photo figure {
+  position: relative;
   margin: 0;
+  padding: 7px;
+  background: var(--paper-raised);
+  border: 1px solid var(--rule);
 }
 
 .about-page .hero-photo img {
   display: block;
-  aspect-ratio: 1;
+  aspect-ratio: 4 / 5;
   object-fit: cover;
   object-position: center 30%;
 }
 
-.about-page .hero-figure figcaption {
-  margin-top: 0.6rem;
-  font-family: var(--font-mono);
-  font-size: 0.66rem;
-  line-height: 1.5;
-  letter-spacing: 0.02em;
-  color: var(--muted);
-}
-
 @media (prefers-reduced-motion: reduce) {
-  .about-page .hero-status-dot::after,
-  .sc-lost-ring {
+  .about-page .hero-status-dot::after {
     animation: none;
   }
 }
@@ -737,8 +674,11 @@ ol.bibliography li .links a.btn:hover {
     padding-top: 2rem;
   }
 
-  .about-page .hero-figure {
-    max-width: 250px;
+  .about-page .hero-photo {
+    order: -1;
+    max-width: 180px;
+    justify-self: start;
+    margin-left: 12px;
   }
 
   .ed-section {
