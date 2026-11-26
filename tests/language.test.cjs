@@ -174,3 +174,17 @@ test("the sticker homepage uses the shared language switch and declares the purg
   assert.match(layout, /data-set-language="en"/);
   assert.match(layout, /data-set-language="zh"/);
 });
+
+test("with dark mode disabled, scripts see a light theme even for a dark system preference", () => {
+  const vm = require("node:vm");
+  const head = fs.readFileSync(path.join(__dirname, "../_includes/head.liquid"), "utf8");
+  const override = head.match(/\{% else %\}\s*<script>([\s\S]*?)<\/script>\s*\{% endif %\}/);
+  assert.ok(override, "head.liquid overrides the computed theme when dark mode is off");
+  const context = vm.createContext({
+    localStorage: { getItem: () => "dark" },
+    window: { matchMedia: () => ({ matches: true, addEventListener() {} }) },
+  });
+  vm.runInContext(fs.readFileSync(path.join(__dirname, "../assets/js/theme.js"), "utf8"), context);
+  vm.runInContext(override[1], context);
+  assert.equal(vm.runInContext("determineComputedTheme()", context), "light");
+});

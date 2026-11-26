@@ -86,6 +86,11 @@
   <script>
     initTheme();
   </script>
+{% else %}
+  <script>
+    // Dark mode is off: tables, charts and search must not follow a saved or system dark preference.
+    determineComputedTheme = () => "light";
+  </script>
 {% endif %}
 
 {% if page.map %}
