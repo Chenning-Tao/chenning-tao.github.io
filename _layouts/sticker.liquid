@@ -15,6 +15,8 @@
 <html lang="{{ page.lang | default: site.lang }}" data-site-language="en">
   <head>
     {% include metadata.liquid %}
+    <!-- This page is always light, whatever the system theme. -->
+    <meta name="color-scheme" content="light">
     <!-- Apply the saved language before first paint; English is the no-JavaScript default. -->
     <script src="{{ '/assets/js/language.js' | relative_url | bust_file_cache }}"></script>
     <link rel="stylesheet" href="{{ '/assets/css/language.css' | relative_url | bust_file_cache }}">

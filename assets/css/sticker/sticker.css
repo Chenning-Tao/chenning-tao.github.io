@@ -18,53 +18,9 @@
   --focus: #5a2bd6;
   --scrim: rgba(35, 20, 70, 0.55);
   --display: "Bricolage Grotesque", "Noto Sans SC", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", system-ui, sans-serif;
+  color-scheme: light;
   --body: "DM Sans", "Noto Sans SC", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", system-ui, -apple-system, "Segoe UI", sans-serif;
 }
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --page: #2a2046;
-    --dot: #35295a;
-    --card: #3a2e60;
-    --ink: #f6f0ff;
-    --muted: #cabfe6;
-    --edge: #0a0612;
-    --rule: #54467f;
-    --tag: #2a2046;
-    --lime: #c5f53b;
-    --pink: #ff8fd0;
-    --on-pop: #17121f;
-    --on-pop-muted: #3d3350;
-    --btn: #f3ebff;
-    --rim: #fffdf8;
-    --hl: #6d47e8;
-    --under: #ff8fd0;
-    --focus: #c5f53b;
-    --scrim: rgba(5, 2, 12, 0.72);
-    color-scheme: dark;
-  }
-}
-:root[data-theme="dark"] {
-  --page: #2a2046;
-  --dot: #35295a;
-  --card: #3a2e60;
-  --ink: #f6f0ff;
-  --muted: #cabfe6;
-  --edge: #0a0612;
-  --rule: #54467f;
-  --tag: #2a2046;
-  --lime: #c5f53b;
-  --pink: #ff8fd0;
-  --on-pop: #17121f;
-  --on-pop-muted: #3d3350;
-  --btn: #f3ebff;
-  --rim: #fffdf8;
-  --hl: #6d47e8;
-  --under: #ff8fd0;
-  --focus: #c5f53b;
-  --scrim: rgba(5, 2, 12, 0.72);
-  color-scheme: dark;
-}
-
 *, *::before, *::after { box-sizing: border-box; }
 body {
   margin: 0;
@@ -84,7 +40,7 @@ a:hover { text-decoration-thickness: 5px; }
 button, input { font: inherit; color: inherit; }
 sup { font-size: 0.7em; line-height: 0; }
 
-/* lime / pink surfaces always carry dark ink, in both themes */
+/* lime / pink surfaces always carry dark ink */
 .pop { --ink: var(--on-pop); --muted: var(--on-pop-muted); --under: var(--on-pop); --focus: var(--on-pop); color: var(--on-pop); }
 
 /* language visibility comes from assets/css/language.css; these only adjust the shared switch */
