@@ -154,12 +154,23 @@ test("the publication search remains an HTML block when included from Markdown",
   assert.match(include, /<div class="publication-search">[\s\S]*<label[\s\S]*<input[\s\S]*>\s*<\/div>/);
 });
 
-test("the biography preserves research and uses the approved internship wording", () => {
+test("the biography keeps computer architecture as the research focus and uses the approved internship wording", () => {
   const biography = fs.readFileSync(path.join(__dirname, "../_pages/about.md"), "utf8");
-  assert.match(biography, /research focuses on \*\*computer architecture/);
-  assert.match(biography, /quantum computing/);
+  assert.match(biography, /research focuses on \*\*computer architecture\*\*\./);
+  assert.match(biography, /研究方向是\*\*计算机体系结构\*\*。/);
+  // Requested 2026-11-26: the biography no longer singles out quantum computing.
+  assert.doesNotMatch(biography, /especially \*\*quantum computing|尤其是\*\*量子计算/);
   assert.match(biography, /I’m currently looking for AI Infra internship opportunities\./);
   assert.match(biography, /我目前正在寻找 AI Infra 相关实习机会。/);
   assert.doesNotMatch(biography, /transitioning|希望转向/);
   assert.doesNotMatch(biography, /research focuses on \*\*AI|focusing on AI Infra|研究方向是 \*\*AI Infra/);
+});
+
+test("the sticker homepage uses the shared language switch and declares the purge-safe attribute", () => {
+  const layout = fs.readFileSync(path.join(__dirname, "../_layouts/sticker.liquid"), "utf8");
+  assert.match(layout, /<html[^>]+data-site-language="en"/);
+  assert.match(layout, /\/assets\/js\/language\.js/);
+  assert.match(layout, /class="language-switch[^"]*"[^>]*hidden/);
+  assert.match(layout, /data-set-language="en"/);
+  assert.match(layout, /data-set-language="zh"/);
 });
