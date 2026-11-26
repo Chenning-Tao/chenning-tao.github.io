@@ -1,0 +1,224 @@
+---
+---
+{%- comment -%}
+  Sticker-sheet homepage (designed with Fable). A standalone page: it does not use the
+  al-folio default layout, but it shares the site's language switch (assets/js/language.js
+  and assets/css/language.css), news collection, bibliography and images.
+  Text lives in _pages/about.md; publications come from _bibliography/papers.bib.
+{%- endcomment -%}
+{%- assign email = site.data.socials.email -%}
+{%- assign wechat_qr = site.data.socials.wechat_qr | prepend: '/assets/img/' | relative_url -%}
+{%- capture mail_icon -%}<svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3.5 7 8.5 6 8.5-6"/></svg>{%- endcapture -%}
+{%- capture wechat_icon -%}<svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.5 4C5.9 4 3 6.4 3 9.4c0 1.7.9 3.2 2.4 4.2L4.8 16l2.7-1.4c.6.1 1.3.2 2 .2"/><path d="M15.5 10c-3 0-5.5 2-5.5 4.5S12.5 19 15.5 19c.5 0 1-.1 1.5-.2l2.3 1.2-.5-2c1.3-.8 2.2-2.1 2.2-3.5 0-2.5-2.5-4.5-5.5-4.5Z"/></svg>{%- endcapture -%}
+{%- capture copy_label -%}<span class="st-copy"><span data-language="en" lang="en">Copy</span><span data-language="zh" lang="zh-CN">复制</span></span><span class="st-copied"><span data-language="en" lang="en">Copied</span><span data-language="zh" lang="zh-CN">已复制</span></span><span class="st-fail"><span data-language="en" lang="en">Select &amp; copy</span><span data-language="zh" lang="zh-CN">请手动复制</span></span>{%- endcapture -%}
+<!doctype html>
+<html lang="{{ page.lang | default: site.lang }}" data-site-language="en">
+  <head>
+    {% include metadata.liquid %}
+    <!-- This page is always light, whatever the system theme. -->
+    <meta name="color-scheme" content="light">
+    <!-- Apply the saved language before first paint; English is the no-JavaScript default. -->
+    <script src="{{ '/assets/js/language.js' | relative_url | bust_file_cache }}"></script>
+    <link rel="stylesheet" href="{{ '/assets/css/language.css' | relative_url | bust_file_cache }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=DM+Sans:opsz,wght@9..40,400..800&family=Noto+Sans+SC:wght@400;500;700;900&display=swap">
+    <link rel="stylesheet" href="{{ '/assets/css/sticker/sticker.css' | relative_url | bust_file_cache }}">
+    <script defer src="{{ '/assets/js/sticker.js' | relative_url | bust_file_cache }}"></script>
+  </head>
+  <body>
+    <header class="top">
+      <div class="wrap top-in">
+        <a class="brand pop" href="#top">{{ site.first_name }} {{ site.last_name }}</a>
+        <nav class="nav" aria-label="Sections">
+          <a href="#news">{% include translated.liquid en="News" zh="动态" %}</a>
+          <a href="#publications">{% include translated.liquid en="Publications" zh="论文" %}</a>
+          <a href="#education">{% include translated.liquid en="Education" zh="教育" %}</a>
+          <a href="#contact">{% include translated.liquid en="Contact" zh="联系" %}</a>
+        </nav>
+        <div class="language-switch lang" role="group" aria-label="Language / 语言" hidden>
+          <button type="button" data-set-language="en" aria-pressed="true" lang="en">EN</button>
+          <button type="button" data-set-language="zh" aria-pressed="false" lang="zh-CN">中文</button>
+        </div>
+      </div>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <div class="wrap hero-grid">
+          <div class="hero-head">
+            <p class="eyebrow pop">{% include translated.liquid en=page.eyebrow zh=page.eyebrow_zh %}</p>
+            <h1>{{ site.first_name }}<br><span class="l2">{{ site.last_name }}</span></h1>
+          </div>
+          <div class="photo-wrap">
+            <figure class="photo stk">
+              <img
+                src="{{ page.profile.image | prepend: '/assets/img/' | relative_url | bust_file_cache }}"
+                width="{{ page.profile.width }}"
+                height="{{ page.profile.height }}"
+                alt="{{ page.profile.alt }}"
+              >
+            </figure>
+            <svg class="spark" viewBox="0 0 48 48" aria-hidden="true"><path d="M24 3c2 12 9 19 21 21-12 2-19 9-21 21-2-12-9-19-21-21 12-2 19-9 21-21Z" fill="var(--pink)" stroke="var(--edge)" stroke-width="3" stroke-linejoin="round"/></svg>
+            <svg class="burst" viewBox="0 0 100 100" aria-hidden="true"><polygon points="50.0,3.0 58.5,13.0 70.4,7.7 73.7,20.3 86.7,20.7 84.2,33.5 95.8,39.5 88.0,50.0 95.8,60.5 84.2,66.5 86.7,79.3 73.7,79.7 70.4,92.3 58.5,87.0 50.0,97.0 41.5,87.0 29.6,92.3 26.3,79.7 13.3,79.3 15.8,66.5 4.2,60.5 12.0,50.0 4.2,39.5 15.8,33.5 13.3,20.7 26.3,20.3 29.6,7.7 41.5,13.0" fill="var(--lime)" stroke="var(--edge)" stroke-width="3.5" stroke-linejoin="round"/><circle cx="39" cy="43" r="4" fill="var(--edge)"/><circle cx="61" cy="43" r="4" fill="var(--edge)"/><path d="M35 57c4 8 26 8 30 0" fill="none" stroke="var(--edge)" stroke-width="4" stroke-linecap="round"/></svg>
+          </div>
+          <div class="hero-body">
+            {{ content }}
+
+            {% if page.open %}
+              <div class="open stk pop on-lime">
+                <p class="open-text">
+                  <span class="dot" aria-hidden="true"></span>{% include translated.liquid en=page.open zh=page.open_zh %}
+                </p>
+                <div class="open-mail">
+                  <a class="mail" href="mailto:{{ email }}">{{ email }}</a>
+                  <button type="button" class="copy-btn" data-copy="{{ email }}">{{ copy_label }}</button>
+                </div>
+              </div>
+            {% endif %}
+
+            <ul class="social">
+              <li>
+                <a class="btn" href="mailto:{{ email }}">{{ mail_icon }}{% include translated.liquid en="Email" zh="邮箱" %}</a>
+              </li>
+              {% if site.data.socials.wechat_qr %}
+                <li>
+                  <a class="wx-btn" href="{{ wechat_qr }}" data-wx aria-haspopup="dialog">{{ wechat_icon }}{% include translated.liquid en="WeChat" zh="微信" %}</a>
+                </li>
+              {% endif %}
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="sec" id="news" aria-labelledby="news-h">
+        <div class="wrap sec-grid">
+          <h2 id="news-h">{% include translated.liquid en="News" zh="新闻动态" %}</h2>
+          <ul class="rows sheet stk">
+            {% assign news = site.news | reverse %}
+            {% for item in news %}
+              <li class="row">
+                <time class="when" datetime="{{ item.date | date: '%Y-%m-%d' }}">
+                  {%- capture news_date_en -%}{{ item.date | date: '%b %Y' }}{%- endcapture -%}
+                  {%- capture news_date_zh -%}{{ item.date | date: '%Y' }} 年 {{ item.date | date: '%-m' }} 月{%- endcapture -%}
+                  {%- include translated.liquid en=news_date_en zh=news_date_zh -%}
+                </time>
+                <div>
+                  <p data-language="en" lang="en">{{ item.content | strip | remove: '<p>' | remove: '</p>' }}</p>
+                  {% if item.zh %}
+                    <p data-language="zh" lang="zh-CN">{{ item.zh }}</p>
+                  {% else %}
+                    <p data-language="zh" lang="en">{{ item.content | strip | remove: '<p>' | remove: '</p>' }}</p>
+                  {% endif %}
+                </div>
+              </li>
+            {% endfor %}
+          </ul>
+        </div>
+      </section>
+
+      <section class="sec" id="publications" aria-labelledby="pub-h">
+        <div class="wrap sec-grid">
+          <h2 id="pub-h">{% include translated.liquid en="Publications" zh="论文发表" %}</h2>
+          <div>
+            <div class="tools">
+              <div class="filter">
+                <input
+                  type="search"
+                  id="pub-filter"
+                  placeholder="Type to filter"
+                  data-language-attribute="placeholder"
+                  data-language-en="Type to filter"
+                  data-language-zh="输入关键词筛选论文"
+                  aria-label="Filter publications / 筛选论文"
+                  autocomplete="off"
+                  spellcheck="false"
+                >
+                <span class="count" id="pub-count" aria-live="polite"></span>
+              </div>
+              <div class="chips" id="pub-chips">
+                <button type="button" class="chip" aria-pressed="false">
+                  {%- include translated.liquid en="Selected" zh="代表作" -%}
+                </button>
+              </div>
+            </div>
+
+            <div class="sheet stk">
+              <div class="rows" id="pub-list">
+                {% bibliography --template sticker_bib %}
+              </div>
+              <p class="empty" id="pub-empty" hidden>
+                {%- include translated.liquid en="No papers match that filter." zh="没有符合筛选条件的论文。" -%}
+              </p>
+              <p class="legend">
+                <span><sup>†</sup> {% include translated.liquid en="equal contribution" zh="共同第一作者" %}</span>
+                <span><sup>*</sup> {% include translated.liquid en="corresponding author" zh="通讯作者" %}</span>
+                <span class="sel">{% include translated.liquid en="selected paper" zh="代表作" %}</span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="sec" id="education" aria-labelledby="edu-h">
+        <div class="wrap sec-grid">
+          <h2 id="edu-h">{% include translated.liquid en="Education" zh="教育经历" %}</h2>
+          <ul class="rows edu">
+            {% for school in page.education %}
+              <li class="row">
+                <div class="when">{% include translated.liquid en=school.years zh=school.years_zh %}</div>
+                <div>
+                  <p data-language="en" lang="en">
+                    <em>{{ school.school }}</em><br>{{ school.degree }}
+                    {%- if school.advisors -%}<br>{{ school.advisors | markdownify | remove: '<p>' | remove: '</p>' | strip }}{%- endif -%}
+                  </p>
+                  <p data-language="zh" lang="zh-CN">
+                    <em>{{ school.school_zh }}</em><br>{{ school.degree_zh }}
+                    {%- if school.advisors_zh -%}<br>{{ school.advisors_zh | markdownify | remove: '<p>' | remove: '</p>' | strip }}{%- endif -%}
+                  </p>
+                </div>
+              </li>
+            {% endfor %}
+          </ul>
+        </div>
+      </section>
+
+      <section class="sec" id="contact" aria-labelledby="contact-h">
+        <div class="wrap sec-grid">
+          <h2 id="contact-h">{% include translated.liquid en="Contact" zh="联系方式" %}</h2>
+          <div class="contact-panel stk pop">
+            <svg class="spark" viewBox="0 0 48 48" aria-hidden="true"><path d="M24 3c2 12 9 19 21 21-12 2-19 9-21 21-2-12-9-19-21-21 12-2 19-9 21-21Z" fill="var(--lime)" stroke="var(--edge)" stroke-width="3" stroke-linejoin="round"/></svg>
+            <div>
+              <p class="contact-note">{% include translated.liquid en=page.contact_note zh=page.contact_note_zh %}</p>
+              <div class="contact-mail">
+                <span class="mail" id="contact-email">{{ email }}</span>
+                <button type="button" class="copy-btn" data-copy="{{ email }}" data-select="contact-email">{{ copy_label }}</button>
+              </div>
+              {% if site.data.socials.wechat_qr %}
+                <ul class="contact-links">
+                  <li>
+                    <a class="wx-btn" href="{{ wechat_qr }}" data-wx aria-haspopup="dialog">{{ wechat_icon }}{% include translated.liquid en="WeChat" zh="微信" %}</a>
+                  </li>
+                </ul>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="foot">
+      <div class="wrap">© {{ 'now' | date: '%Y' }} {{ site.first_name }} {{ site.last_name }}</div>
+    </footer>
+
+    {% if site.data.socials.wechat_qr %}
+      <div class="wx-modal" id="wechat" hidden>
+        <div class="wx-card" role="dialog" aria-modal="true" aria-labelledby="wx-title">
+          <button type="button" class="wx-close" data-wx-close aria-label="Close / 关闭">&times;</button>
+          <p class="wx-title" id="wx-title">{% include translated.liquid en="Scan to add me on WeChat" zh="扫码添加微信" %}</p>
+          <img src="{{ wechat_qr }}" width="888" height="1134" loading="lazy" alt="WeChat QR code for adding {{ site.first_name }} {{ site.last_name }} as a contact">
+        </div>
+      </div>
+    {% endif %}
+  </body>
+</html>
