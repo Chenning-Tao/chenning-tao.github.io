@@ -205,20 +205,20 @@
           </div>
         </div>
       </section>
-
-      {% if site.data.socials.wechat_qr %}
-        <div class="wx-modal" id="wechat" hidden>
-          <div class="wx-card" role="dialog" aria-modal="true" aria-labelledby="wx-title">
-            <button type="button" class="wx-close" data-wx-close aria-label="Close / 关闭">&times;</button>
-            <p class="wx-title" id="wx-title">{% include translated.liquid en="Scan to add me on WeChat" zh="扫码添加微信" %}</p>
-            <img src="{{ wechat_qr }}" width="888" height="1134" loading="lazy" alt="WeChat QR code for adding {{ site.first_name }} {{ site.last_name }} as a contact">
-          </div>
-        </div>
-      {% endif %}
     </main>
 
     <footer class="foot">
       <div class="wrap">© {{ 'now' | date: '%Y' }} {{ site.first_name }} {{ site.last_name }}</div>
     </footer>
+
+    {% if site.data.socials.wechat_qr %}
+      <div class="wx-modal" id="wechat" hidden>
+        <div class="wx-card" role="dialog" aria-modal="true" aria-labelledby="wx-title">
+          <button type="button" class="wx-close" data-wx-close aria-label="Close / 关闭">&times;</button>
+          <p class="wx-title" id="wx-title">{% include translated.liquid en="Scan to add me on WeChat" zh="扫码添加微信" %}</p>
+          <img src="{{ wechat_qr }}" width="888" height="1134" loading="lazy" alt="WeChat QR code for adding {{ site.first_name }} {{ site.last_name }} as a contact">
+        </div>
+      </div>
+    {% endif %}
   </body>
 </html>

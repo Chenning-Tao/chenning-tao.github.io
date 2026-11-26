@@ -109,9 +109,25 @@
   const modal = document.getElementById("wechat");
   if (modal) {
     let opener = null;
+    const closeButton = modal.querySelector("[data-wx-close]");
+    // Everything outside the popup is made inert while it is open, so keyboard
+    // and screen-reader users cannot reach the page behind the overlay.
+    const background = () => Array.from(document.body.children).filter((el) => el !== modal);
+    const setBackgroundInert = (on) => {
+      background().forEach((el) => {
+        if (on) {
+          el.setAttribute("inert", "");
+          el.setAttribute("aria-hidden", "true");
+        } else {
+          el.removeAttribute("inert");
+          el.removeAttribute("aria-hidden");
+        }
+      });
+    };
     const close = () => {
       if (modal.hidden) return;
       modal.hidden = true;
+      setBackgroundInert(false);
       if (opener && opener.focus) opener.focus();
     };
     document.querySelectorAll("[data-wx]").forEach((button) => {
@@ -120,7 +136,7 @@
         event.preventDefault();
         opener = event.currentTarget;
         modal.hidden = false;
-        const closeButton = modal.querySelector("[data-wx-close]");
+        setBackgroundInert(true);
         if (closeButton) closeButton.focus();
       });
     });
@@ -128,7 +144,14 @@
       if (event.target === modal || event.target.closest("[data-wx-close]")) close();
     });
     document.addEventListener("keydown", (event) => {
-      if (event.key === "Escape") close();
+      if (modal.hidden) return;
+      if (event.key === "Escape") {
+        close();
+      } else if (event.key === "Tab" && closeButton) {
+        // The close button is the only control in the popup, so Tab stays on it.
+        event.preventDefault();
+        closeButton.focus();
+      }
     });
   }
 })();
